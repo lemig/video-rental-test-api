@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150321142232) do
+ActiveRecord::Schema.define(version: 20150321144703) do
 
   create_table "contents", force: :cascade do |t|
     t.string   "type"
@@ -25,5 +25,11 @@ ActiveRecord::Schema.define(version: 20150321142232) do
   end
 
   add_index "contents", ["season_id"], name: "index_contents_on_season_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
