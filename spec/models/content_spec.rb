@@ -12,6 +12,8 @@ RSpec.describe Content, type: :model do
   
   it { should validate_inclusion_of(:quality).in_array(["SD", "HD"]) }
 
+  it { should have_many(:purchases).order(created_at: :desc) }
+
   # it "has a default price of 2.99" do
   #   @content = Content.new
   #   expect(@content.price).to eq(2.99)
