@@ -1,0 +1,3 @@
+class Season < Content
+
+end
