@@ -12,7 +12,8 @@ describe "Movies API" do
   end
 
   it 'retrieves a specific movie' do
-    movie = FactoryGirl.create(:movie)    
+    movie = FactoryGirl.create(:movie)
+    
     get "/movies/#{movie.id}"
 
     expect(response).to be_success

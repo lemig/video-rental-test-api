@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :content do
-    type "Movie"
     title "300: Rise of an Empire"
     plot "MyText"
   end

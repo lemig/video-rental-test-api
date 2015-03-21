@@ -7,8 +7,6 @@ RSpec.describe Content, type: :model do
   end
 
   it { should validate_presence_of :title }
-  
-  it { should validate_presence_of :type }
 
   it { should have_many(:purchase_options) }
 end

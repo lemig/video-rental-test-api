@@ -12,7 +12,7 @@ RSpec.describe Movie, type: :model do
     let!(:movie_two) { FactoryGirl.create(:movie, title: "Asterix") }
 
     it 'orders by cretaion' do
-      expect(Movie.all).to eq([movie_one, movie_two])
+      expect(Movie.all.to_a).to eq([movie_one, movie_two])
     end
   end
 end
