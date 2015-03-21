@@ -13,8 +13,8 @@ RSpec.describe Purchase, type: :model do
   end
 
   it { should validate_presence_of(:user_id) }
-  it { should validate_presence_of(:content_id) }
+  it { should validate_presence_of(:purchase_option_id) }
 
   it { should belong_to(:user) }
-  it { should belong_to(:content) }
+  it { should belong_to(:purchase_option) }
 end

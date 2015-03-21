@@ -10,4 +10,5 @@ RSpec.describe User, type: :model do
   it { should validate_uniqueness_of :email }
 
   it { should have_many(:purchases).order(created_at: :desc) }
+  it { should have_many(:purchase_options).through(:purchases) }
 end
