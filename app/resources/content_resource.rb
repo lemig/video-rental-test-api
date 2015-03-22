@@ -1,7 +1,7 @@
 require 'jsonapi/resource'
 
 class ContentResource < JSONAPI::Resource
-  attributes :title, :plot, :created_at, :updated_at, :content_type
+  attributes :id, :title, :plot, :created_at, :updated_at, :content_type
 
   def content_type
     @model.type.downcase.pluralize

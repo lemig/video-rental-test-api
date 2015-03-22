@@ -1,7 +1,7 @@
 module Requests
   module JsonHelpers
     def json
-      @json ||= JSON.parse(response.body)
+      @json ||= JSON.parse(body)
     end
   end
 end

@@ -11,4 +11,13 @@ RSpec.describe User, type: :model do
 
   it { should have_many(:purchases).order(created_at: :desc) }
   it { should have_many(:purchase_options).through(:purchases) }
+
+  it "should get an random authorization token" do
+    users = FactoryGirl.create_list(:user, 2)
+    auth_tokens = users.map(&:auth_token)
+
+    expect(auth_tokens.all?(&:present?)).to be true   # present
+
+    expect(auth_tokens.uniq!).to be_nil               # no duplicates
+  end
 end

@@ -1,5 +1,6 @@
 require 'jsonapi/resource'
 
 class UserResource < JSONAPI::Resource
-  attributes :email
+  attributes :id, :email
+  has_many :purchases
 end

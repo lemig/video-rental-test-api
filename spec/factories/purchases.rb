@@ -4,6 +4,5 @@ FactoryGirl.define do
   factory :purchase do
     user
     purchase_option
-    price 2.99
   end
 end
