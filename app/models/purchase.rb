@@ -7,6 +7,23 @@ class Purchase < ActiveRecord::Base
 
   before_save :store_purchase_option_price
 
+  VALIDITY = 2.days
+
+  default_scope -> { order("created_at") }
+  scope :active, -> { where(["created_at > ?", VALIDITY.ago]) }
+
+  def active?
+    created_at > VALIDITY.ago
+  end
+
+  def validity_in_seconds
+    (created_at + VALIDITY - Time.now).round
+  end
+
+  def content
+    purchase_option.content
+  end
+
   private
 
     def store_purchase_option_price

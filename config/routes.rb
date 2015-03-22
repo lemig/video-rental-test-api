@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   jsonapi_resources :purchase_options
   jsonapi_resources :seasons
   jsonapi_resources :users
+  jsonapi_resources :libraries
 end

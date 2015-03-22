@@ -10,7 +10,7 @@ describe "Content API" do
   end
 
   it 'sends a list of contents order by creation' do
-    get '/contents'#, filter: {content_type: "movies,seasons"}
+    get '/contents'
 
     expect(response).to be_success
 
