@@ -22,6 +22,10 @@ describe "Content API" do
   it 'can filter by content_type' do
     get '/contents', filter: {content_type: "movies,seasons"}
 
+    expect(response).to eq 1
+
+
+
     expect(response).to be_success
 
     expect(json['data'].length).to eq(5)

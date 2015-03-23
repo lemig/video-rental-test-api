@@ -1,28 +1,53 @@
-== README
+== Problem
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Our application has movies, seasons and episodes. Let's simplify the metadata, so it only has a title and a plot. An episode belongs to a season and a season can have N episodes, the episode also has the number of episode in the season.
+Movies and seasons can be purchased (but not episodes), they have several purchase options, a purchase option has a price (2.99) and a video quality (HD or SD).
 
-Things you may want to cover:
+We also have users, to simplify, a user only will have an email.
 
-* Ruby version
+A user can make a purchase of a content (movie/season) through a purchase option. When a user makes a purchase, we store it in his library, the user has up to 2 days to see the content. In his library, we only show the titles that the user has "alive" and he can see and not the expired purchases. Also, while the user has a content in his library, he can't purchase the same content again.
+For instance, if the user purchases the movie '300: Rise of an Empire' and goes to his library, he will find the movie, if he tries to purchase it again, he will receive an error. 3 days after, if he goes to the library, the movie will not appear in his library and he can purchase it again.
 
-* System dependencies
 
-* Configuration
-
-* Database creation
+== Set up
 
 * Database initialization
 
+       rake db:setup
+
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+       rspec
+      
+* How to run the server
 
-* Deployment instructions
+       rails s
+       
+== Solution
 
-* ...
+* Movies ordered by creation
+
+      curl -i  -H "Accept: application/vnd.api+json" -X GET "http://localhost:3000/movies"
+      
+* Seasons including episodes
+
+    curl -i  -H "Accept: application/vnd.api+json" -X GET "http://localhost:3000/seasons?include=episodes"
+    
+* Movies and seasons ordered by creation (to do: find how to pass filter through curl)
+
+    get '/contents', filter: {content_type: "movies,seasons"}
+* User can purchase content (through purchase option)
+
+      curl -i -H "Authorization: Token token=DEV_TOKEN" -H "Accept: application/vnd.api+json" -H 'Content-Type:application/vnd.api+json' -X POST -d '{"data": {"type":"purchases", "links": {"purchase-option": {"type": "purchase_options", "id":"1"}}}}' "http://localhost:3000/purchases"
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Library of content by time left to watch
+
+      curl -i -H "Authorization: Token token=DEV_TOKEN" -H "Accept: application/vnd.api+json" -X GET "http://localhost:3000/libraries"
+      
+
+== Solution
+
+  - Caching
+  - Versioning
+

@@ -3,6 +3,10 @@
 
 users = User.create([{ email: "miguel@example.com" }, { email: "cris@example.com" }] )
 
+user = users.first
+user.auth_token = 'DEV_TOKEN'
+user.save
+
 movies = Movie.create([
   { title: "300: Rise of an Empire",
     plot: "Greek general Themistokles leads the charge against invading Persian forces led by mortal-turned-god Xerxes and Artemisia, vengeful commander of the Persian navy."

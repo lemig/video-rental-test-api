@@ -58,14 +58,14 @@ describe "Purchases API" do
     # expect(status).to eq(201)
 
     # But can be verified by:
-    # curl -i -H "Authorization: Token token=9feb05bca4024444abdc92b1ddde9783" -H "Accept: application/vnd.api+json" -H 'Content-Type:application/vnd.api+json' -X POST -d '{"data": {"type":"purchases", "links": {"purchase-option": {"type": "purchase_options", "id":"1"}}}}' "http://localhost:3000/purchases"
+    # curl -i -H "Authorization: Token token=DEV_TOKEN" -H "Accept: application/vnd.api+json" -H 'Content-Type:application/vnd.api+json' -X POST -d '{"data": {"type":"purchases", "links": {"purchase-option": {"type": "purchase_options", "id":"1"}}}}' "http://localhost:3000/purchases"
   end
 
   it 'prevents purchasing active content' do
     # same issue
 
     # But can be verified by buying twice in less than two days the same purchase options:
-    # curl -i -H "Authorization: Token token=871f25233bcf4588b1b654de5cfffa2a" -H "Accept: application/vnd.api+json" -H 'Content-Type:application/vnd.api+json' -X POST -d '{"data": {"type":"purchases", "links": {"purchase-option": {"type": "purchase_options", "id":"1"}}}}' "http://localhost:3000/purchases"
+    # curl -i -H "Authorization: Token token=DEV_TOKEN" -H "Accept: application/vnd.api+json" -H 'Content-Type:application/vnd.api+json' -X POST -d '{"data": {"type":"purchases", "links": {"purchase-option": {"type": "purchase_options", "id":"1"}}}}' "http://localhost:3000/purchases"
 
     # expect(response).not_to be_success
     # expect(status).to eq(422) #Unprocessable Entity 
