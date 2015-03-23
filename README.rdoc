@@ -46,7 +46,7 @@ For instance, if the user purchases the movie '300: Rise of an Empire' and goes 
       curl -i -H "Authorization: Token token=DEV_TOKEN" -H "Accept: application/vnd.api+json" -X GET "http://localhost:3000/libraries"
       
 
-== Solution
+== TO DO
 
   - Caching
   - Versioning
