@@ -7,6 +7,14 @@ class User < ActiveRecord::Base
 
   before_create :set_auth_token
 
+  def active_purchases
+    purchases.active
+  end
+
+  def active_purchase_options
+    active_purchases.includes(:purchase_option).map(&:purchase_option)
+  end
+
   private
     def set_auth_token
       return if auth_token.present?

@@ -5,4 +5,8 @@ class PurchaseOption < ActiveRecord::Base
   validates :quality, presence: true, :inclusion => { :in => ["SD", "HD"] }
   validates :content_id, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0.0 }
+
+  def purchasable?(user)
+    !user.active_purchase_options.include? self
+  end
 end

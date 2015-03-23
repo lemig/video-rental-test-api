@@ -42,4 +42,14 @@ RSpec.describe Purchase, type: :model do
       end
     end
   end
+
+  it "prevent purchasing active content" do
+    @purchase = FactoryGirl.build(:purchase)
+    @purchase.user.stub(:active_purchase_options).and_return([])
+    expect{ @purchase.save! }.not_to raise_error
+
+    @purchase = FactoryGirl.build(:purchase)
+    @purchase.user.stub(:active_purchase_options).and_return([@purchase.purchase_option])
+    expect{ @purchase.save! }.to raise_error
+  end
 end

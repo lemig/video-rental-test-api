@@ -5,6 +5,7 @@ class Purchase < ActiveRecord::Base
   validates_presence_of :user_id
   validates_presence_of :purchase_option_id
 
+  before_save :check_not_active_purchase_option
   before_save :store_purchase_option_price
 
   VALIDITY = 2.days
@@ -25,6 +26,12 @@ class Purchase < ActiveRecord::Base
   end
 
   private
+    def check_not_active_purchase_option
+      if user.active_purchase_options.include? purchase_option
+        errors.add(:purchase_option, 'is already active')
+        false
+      end
+    end
 
     def store_purchase_option_price
       self.price = purchase_option.price
